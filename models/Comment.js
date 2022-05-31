@@ -1,11 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Codesnip extends Model {
+class Comment extends Model {}
 
-}
-
-Codesnip.init ({
+Comment.init ({
 
     id: {
       type: DataTypes.INTEGER,
@@ -13,41 +11,38 @@ Codesnip.init ({
       primaryKey: true,
       autoIncrement: true,
     },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
     content: {
       type: DataTypes.TEXT,
       allowNull: false,
-
     },
     date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    favorited: {
-      type: DataTypes.INTEGER,
-      defaultVALUE: 0,
-      allowNull: false,
-    },
     user_id: {
-        type:DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull:false,
         references: {
             model:"user",
             key:"id"
         }
+    },
+    post_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'post',
+            key: 'id'
+        }
+    }
+},
 
-    },},
-    {
+{
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'codesnip',
-   });
+    modelName: 'comment',
+});
 
-   module.exports =Codesnip
-
-
+module.exports = Comment;

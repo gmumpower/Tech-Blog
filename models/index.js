@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 const Comment = require('./Comment');
 const Post = require('./Post');
 const User = require('./User');
-const Tag = require('./Tag');
+const Tag = require('./TagPost');
 const Favorite = require('./Favorite');
 const TagPost = require('./TagPost');
 

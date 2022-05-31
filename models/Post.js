@@ -1,11 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Codesniptag extends Model {
+class Post extends Model {}
 
-}
-
-Codesniptag.init ({
+Post.init ({
 
     id: {
       type: DataTypes.INTEGER,
@@ -13,31 +11,34 @@ Codesniptag.init ({
       primaryKey: true,
       autoIncrement: true,
     },
-
-    codesnip_id: {
-        type:DataTypes.INTEGER,
-        allowNull:false,
-        references: {
-            model:"codesnip",
-            key:"id"
-        }
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+    content: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
-
-    tag_id: {
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    author_id: {
         type:DataTypes.INTEGER,
         allowNull:false,
         references: {
-            model:"tag",
+            model:"user",
             key:"id"
         }
     },
 },
-    {
+
+{
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'codesniptag',
-   });
+    modelName: 'post',
+});
 
-   module.exports =Codesniptag
+module.exports = Post;
