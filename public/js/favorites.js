@@ -13,7 +13,7 @@ function favStatus(element){
 
 function favorite(element) {
     //post call that should redirect if not logged in
-    fetch(`/api/users/favorite/${element.getAttribute('snodeid')}`, {
+    fetch(`/api/users/favorite/${element.getAttribute('postid')}`, {
       method: 'PUT'
     });
 
