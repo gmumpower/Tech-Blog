@@ -1,1 +1,22 @@
-{{> snodes}}
+<div class="d-flex flex-column align-items-start justify-content-start m-2">
+  {{#each posts as |post|}}
+    {{> posts}}
+    <h5 class="text-center p-2 ml-3 mb-5"><a href="../../../posts/{{id}}/comment">[ Add Comment ]</a></h5>
+
+  {{else}}
+    <div class="d-flex container justify-content-center">
+      <div class="row">
+        <h1 class="pr-3 align-self-end">{ </h1>
+        <h3 class="text-muted align-self-center"><i>No posts Here...</i></h3>
+        <h1 class="pl-3"> }</h1>
+      </div>
+    </div>
+  {{/each}}
+  
+{{#each posts.[0].comments as |comment|}}
+  {{>comment}}
+{{/each}}
+</div>
+
+{{!-- Links --}}
+<script src="../../js/favorite.js"></script>
